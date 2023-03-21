@@ -64,12 +64,11 @@ const display = () => {
   const remover = document.querySelectorAll('.removeBtn');
   remover.forEach((del) => {
     del.addEventListener('click', () => {
-      // booksList.removeChild()
       // check books array against index condition
-      // books=books.filter((book) => book.id !== index)
       books = books.filter((book) => +del.parentNode.querySelector('h3').getAttribute('id') !== book.id); // TODO
       // delete element from parent node
       const removeEl = del.parentNode;
+      saveBooksToStorage()
       removeEl.remove();
     });
   });
