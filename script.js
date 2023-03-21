@@ -68,7 +68,7 @@ const display = () => {
       books = books.filter((book) => +del.parentNode.querySelector('h3').getAttribute('id') !== book.id); // TODO
       // delete element from parent node
       const removeEl = del.parentNode;
-      saveBooksToStorage()
+      saveBooksToStorage();
       removeEl.remove();
     });
   });
