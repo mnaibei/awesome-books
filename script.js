@@ -1,78 +1,119 @@
-// const { text } = require("stream/consumers");
+//books array
+let books = [
+    {
+        id: 0,
+        title: 'Harry Potter and the Prisoner of Azkaban',
+        author: 'JK Rowling',
+    },
+    {
+        id: 1,
+        title: 'The DaVinci Code',
+        author: 'Dan Brown',
+    },
+    {
+        id: 2,
+        title: 'Harry Potter Deathly Hallows',
+        author: 'JK Rowling',
+    },
+    {
+        id: 3,
+        title: 'Deception Point',
+        author: 'Dan Brown',
+    },
+    {
+        id: 4,
+        title: 'Angels and Demons',
+        author: 'Dan Brown',
+    },
+];
+
+//local storage goes here
+function saveBooksToStorage() {
+    localStorage.setItem('book', JSON.stringify(books));
+}
+  
+function getFromStoredBooks() {
+    const storedBooks = localStorage.getItem('book');
+    if (storedBooks) {
+      books = JSON.parse(storedBooks);
+    }
+}
+
+//calling dom elements
 const inputTitle = document.querySelector('.txtTitle')
 const inputAuthor = document.querySelector('.txtAuthor')
 const addBooks = document.querySelector('.addBook')
+const booksList = document.querySelector('.books-list')
 
-const newBooks = []
-const newBooksObj = {}
-function Book(name ,title){
-    this.name = name;
-    this.title = title
+//display books in books array and add remove button function
+const display = () => {
+    books.forEach((book) => {
+        
+        const saveBook = document.createElement('div')
+        saveBook.classList.add('books')
+        saveBook.innerHTML += `<h3>${book.title}</h3><p>${book.author}</p>`;
+
+        //adding remove button
+        const removeButton = document.createElement('button')
+        removeButton.classList.add('removeBtn')
+        removeButton.innerHTML = "Remove"
+        // remove.appendChild(removeButton)
+        saveBook.appendChild(removeButton)
+        booksList.appendChild(saveBook)
+    });
+
+    const remover = document.querySelectorAll('.removeBtn')
+    remover.forEach((del, index) => {
+        del.addEventListener('click', () => {
+            // booksList.removeChild()
+            //check books array against index condition
+            books=books.filter((book) => book.id !== index) 
+            // books = books.splice(index, 1)
+            console.log(books)
+            //delete element from parent node
+            const removeEl = del.parentNode
+            removeEl.remove()
+        })
+    })
 }
 
-
+//button to add books
 addBooks.addEventListener('click', (e) => {
-    e.preventDefault();
+    if (inputTitle.value === '' || inputAuthor.value === '') return;
+    //prevent page from reloading
+    e.preventDefault() 
 
-    // const name = inputAuthor.value
-    // const title = inputTitle.value
+    // when book added id increments
+    let id = books.length
+    books.forEach((test) => {
+        while (test.id === id) {
+            id += 1;
+        }
+    });
+    console.log(id, books)
 
-    const bookFunction = new Book(inputAuthor.value, inputTitle.value)
+    //append added books to obj and html
+    const title = inputTitle.value;
+    const author = inputAuthor.value;
 
-    // newBooksObj.name =inputAuthor.value
-    // newBooksObj.title = inputTitle.value
+    console.log(title, author)
 
-    newBooks.push(bookFunction)
-    console.log(bookFunction, newBooks)
+    const newAddition = { id, title, author }
+    books.push(newAddition)
 
-    const booksList = document.querySelector('.books-list')
+    inputTitle.value = '';
+    inputAuthor.value = '';
+    booksList.innerHTML = '';
 
+    console.log(newAddition, books)
+    display()
+    saveBooksToStorage()
+});
+
+//when window loads do the following
+window.onload = () => {
+    getFromStoredBooks()
+    display();
+    saveBooksToStorage()
     
-    console.log(booksList)
-
-
-    const mainBooks = document.createElement('div')
-    mainBooks.classList.add('main-books-container')
-
-    const mainBooksContainer = document.querySelectorAll('.main-books-container')
-    Array.from(mainBooksContainer)
-    Array.isArray(mainBooksContainer)
-
-    const save = document.createElement('div')
-    save.classList.add('books')
-
-    mainBooks.appendChild(save)
-    booksList.appendChild(mainBooks)
-
-    const bookInputTitle = document.createElement('input')
-    bookInputTitle.classList.add('text')
-    bookInputTitle.type = 'text'
-    bookInputTitle.value = bookFunction.title;
-    bookInputTitle.setAttribute('readonly', 'readonly')
-
-    save.appendChild(bookInputTitle)
-
-    const bookInputAuthor = document.createElement('input')
-    bookInputAuthor.classList.add('text')
-    bookInputAuthor.type = 'text'
-    bookInputAuthor.value = bookFunction.name;
-    bookInputAuthor.setAttribute('readonly', 'readonly')
-
-    save.appendChild(bookInputAuthor)
-
-    const remove = document.createElement('div')
-    remove.classList.add('removeBooks')
-
-    const removeButton = document.createElement('button');
-    removeButton.classList.add('removeBtn');
-    removeButton.innerHTML = 'Remove'
-
-    remove.appendChild(removeButton);
-    save.appendChild(remove)
-
-    removeButton.addEventListener('click', () => {
-        booksList.removeChild(mainBooks)
-        function removeBook(){}
-    })
-
-})
+}
