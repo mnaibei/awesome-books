@@ -21,10 +21,7 @@
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
-  - [Install](#install)
   - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -35,7 +32,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Portfolio<a name="about-project"></a>
+# 📖 Awesome Books<a name="about-project"></a>
 
 > This is an app to add and remove books created using html css and js
 
@@ -44,6 +41,15 @@
 ### Tech Stack <a name="tech-stack"></a>
 
 > HTML&CSS&JS
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Key Features <a name="key-features"></a>
+
+- **[Add books]**
+- **[Remove books]**
+- **[Books saved to local storage]**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## 🚀 Live Demo <a name="live-demo"></a>
@@ -73,7 +79,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone git@github.com:mnaibei/portolio.git
+  git clone git@github.com:mnaibei/awesome-books.git
 ```
 
 ### Usage
@@ -90,7 +96,7 @@ To run the project, execute the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Author1**
+👤 **Mucha Naibei**
 
 - GitHub: [mnaibei](https://github.com/mnaibei)
 - Twitter: [MNaibei_](https://twitter.com/mnaibei_)
@@ -141,7 +147,5 @@ I would like to thank Microverse
 ## 📝 License <a name="license"></a>
 
 This project is [MIT](./LICENSE) licensed.
-
-_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
