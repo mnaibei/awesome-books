@@ -1,30 +1,5 @@
 // books array
 let books = [
-  {
-    id: 0,
-    title: 'Harry Potter and the Prisoner of Azkaban',
-    author: 'JK Rowling',
-  },
-  {
-    id: 1,
-    title: 'The DaVinci Code',
-    author: 'Dan Brown',
-  },
-  {
-    id: 2,
-    title: 'Harry Potter Deathly Hallows',
-    author: 'JK Rowling',
-  },
-  {
-    id: 3,
-    title: 'Deception Point',
-    author: 'Dan Brown',
-  },
-  {
-    id: 4,
-    title: 'Angels and Demons',
-    author: 'Dan Brown',
-  },
 ];
 
 // local storage goes here
