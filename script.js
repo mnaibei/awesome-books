@@ -51,8 +51,8 @@ const display = () => {
         
         const saveBook = document.createElement('div')
         saveBook.classList.add('books')
-        saveBook.innerHTML += `<h3>${book.title}</h3><p>${book.author}</p>`;
-
+        // saveBook.innerHTML += `<h3>${book.title}</h3><p>${book.author}</p>`;
+        saveBook.innerHTML += `<h3 id="${book.id}">${book.title}</h3><p>${book.author}</p>`
         //adding remove button
         const removeButton = document.createElement('button')
         removeButton.classList.add('removeBtn')
@@ -67,7 +67,9 @@ const display = () => {
         del.addEventListener('click', () => {
             // booksList.removeChild()
             //check books array against index condition
-            books=books.filter((book) => book.id !== index) 
+            // books=books.filter((book) => book.id !== index) 
+            books=books.filter((book) => +del.parentNode.querySelector("h3").getAttribute("id") !== book.id) //TODO
+
             // books = books.splice(index, 1)
             console.log(books)
             //delete element from parent node
